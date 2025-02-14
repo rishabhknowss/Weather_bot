@@ -1,5 +1,5 @@
 
-# **Telegram Weather Bot** 🌦️
+# **🌩️ Telegram Weather Bot** 
 
 ## Project Overview
 Telegram Weather Bot is a project consisting of two main components:
@@ -39,8 +39,8 @@ root/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-repo/telegram-weather-bot.git
-cd telegram-weather-bot
+git clone https://github.com/rishabhknowss/Weather_bot.git
+cd Weather_bot
 ```
 
 ### 2. Setup Environment Variables
