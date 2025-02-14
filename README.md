@@ -34,8 +34,8 @@ root/
 ---
 
 ## Deployment
-- **Telegram Bot**: [Live Bot Link](#https://t.me/rishabh_weather_astbot)  
-- **Admin Panel**: [Admin Panel Link](#https://manage-weather-bot-rishabh.vercel.app/)
+- **Telegram Bot**: [Live Bot Link](https://t.me/rishabh_weather_astbot)  
+- **Admin Panel**: [Admin Panel Link](https://manage-weather-bot-rishabh.vercel.app/)
          //this will show my api (ik not good for production)
 ---
 
