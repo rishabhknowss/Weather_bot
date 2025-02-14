@@ -35,16 +35,13 @@ function App() {
     }
   };
 
-  const updateApiKey = async () => {
-    const newApiKey = prompt("Enter the new API key:");
-    if (newApiKey) {
-      try {
-        const response = await axios.post("/admin/api-key", { key: newApiKey });
-        alert(response.data);
-        fetchApiKey();
-      } catch (error) {
-        console.error("Error updating API key:", error);
-      }
+  const updateApiKey = async (newApiKey) => {
+    try {
+      const response = await axios.post("/admin/api-key", { key: newApiKey });
+      alert(response.data);
+      setApiKey(newApiKey);
+    } catch (error) {
+      console.error("Error updating API key:", error);
     }
   };
 
@@ -59,11 +56,11 @@ function App() {
   };
 
   const onLogin = (userData) => {
-    setUser(userData); // Update the user state with the logged-in user data
+    setUser(userData);
   };
 
   const onLogout = () => {
-    setUser(null); // Clear the user state on logout
+    setUser(null);
   };
 
   return (

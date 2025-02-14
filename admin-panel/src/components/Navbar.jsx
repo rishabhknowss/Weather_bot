@@ -31,7 +31,7 @@ export default function Navbar({ user, setUser }) {
   return (
     <nav className="bg-white/10 backdrop-blur-md rounded-full py-3 px-8 sticky top-4 z-50 shadow-lg mx-auto border border-white/20 max-w-7xl">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-900">Telegram Bot Weather</h1>
+        <h1 className="text-xl font-bold text-gray-900">🌩️ Telegram Bot Weather</h1>
 
         <div className="flex items-center space-x-8">
           <a href="/" className="text-gray-800 hover:text-blue-500 transition font-medium flex items-center">
