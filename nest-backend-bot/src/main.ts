@@ -6,7 +6,10 @@ async function bootstrap() {
 
   // Enable CORS for all origins
   app.enableCors({
-    origin: 'http://localhost:5173', // Allow only this origin
+    origin: [
+      'http://localhost:5173',
+      'https://manage-weather-bot-rishabh.vercel.app',
+    ],
     methods: 'GET,HEAD,POST,PUT,DELETE,PATCH',
     credentials: true,
   });
