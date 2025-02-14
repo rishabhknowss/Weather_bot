@@ -1,17 +1,20 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
+
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
-  plugins: [react() , tailwindcss(),],
+  plugins: [react(), tailwindcss()],
   server: {
     proxy: {
       '/admin': {
-        target: 'http://localhost:3000', // Your backend server
+        target: isProd ? 'https://weatherbot.100dollarlandingpages.com' : 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       },
       '/users': {
-        target: 'http://localhost:3000',
+        target: isProd ? 'https://weatherbot.100dollarlandingpages.com' : 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       },
