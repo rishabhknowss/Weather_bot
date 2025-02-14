@@ -5,7 +5,7 @@
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "scripts": {
-    "build": "nest build",
+    "build": "npx nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start --watch",
     "start:dev": "nest start --watch",
@@ -31,7 +31,7 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
-    "@nestjs/cli": "^10.0.1",
+    "@nestjs/cli": "^10.4.9",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.0",
     "@swc/cli": "^0.1.62",
