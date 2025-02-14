@@ -1,5 +1,14 @@
 
-# **🌩️ Telegram Weather Bot** 
+# **🌩️ Telegram Weather Bot**  
+Stay updated with the latest weather forecasts directly through Telegram!  
+
+## Webpage Preview  
+![Webpage Screenshot](https://github.com/user-attachments/assets/3ec6ee06-2f7a-451c-bbdd-f25d51cd0e17)  
+
+## Bot Interface  
+Here’s how the Telegram bot looks in action:  
+
+![Bot Screenshot](https://github.com/user-attachments/assets/4ccd2549-c5cf-48ed-8a1b-cbf742e7ef64)  
 
 ## Project Overview
 Telegram Weather Bot is a project consisting of two main components:
