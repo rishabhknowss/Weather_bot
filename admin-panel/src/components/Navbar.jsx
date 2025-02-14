@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { FiHome, FiChevronDown, FiLogOut } from "react-icons/fi";
+import { FiHome, FiChevronDown, FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 export default function Navbar({ user, setUser }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleDropdownToggle = () => setDropdownOpen(!dropdownOpen);
+  const handleMenuToggle = () => setMenuOpen(!menuOpen);
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -15,7 +17,7 @@ export default function Navbar({ user, setUser }) {
         const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
           headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
         });
-        setUser(userInfo.data); // Set user with fetched data (name, picture, etc.)
+        setUser(userInfo.data);
       } catch (error) {
         console.error("Failed to fetch user info:", error);
       }
@@ -29,11 +31,19 @@ export default function Navbar({ user, setUser }) {
   };
 
   return (
-    <nav className="bg-white/10 backdrop-blur-md rounded-full py-3 px-8 sticky top-4 z-50 shadow-lg mx-auto border border-white/20 max-w-7xl">
+    <nav className="bg-white/10 backdrop-blur-md rounded-full py-3 px-6 sticky top-4 z-50 shadow-lg mx-auto border border-white/20 max-w-7xl">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold text-gray-900">🌩️ Telegram Bot Weather</h1>
 
-        <div className="flex items-center space-x-8">
+        <button onClick={handleMenuToggle} className="md:hidden text-gray-800 text-2xl focus:outline-none">
+          {menuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+        <div
+          className={`${
+            menuOpen ? "block" : "hidden"
+          } md:flex items-center space-x-8 mt-4 md:mt-0 transition-all`}
+        >
           <a href="/" className="text-gray-800 hover:text-blue-500 transition font-medium flex items-center">
             <FiHome className="mr-2" /> Home
           </a>
@@ -60,7 +70,6 @@ export default function Navbar({ user, setUser }) {
                 onClick={handleDropdownToggle}
                 className="flex items-center space-x-2 bg-gray-800 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-700 transition"
               >
-                
                 <span>{user.name.split(" ")[0]}</span>
                 <FiChevronDown className="w-4 h-4" />
               </button>
