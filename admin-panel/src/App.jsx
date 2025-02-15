@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
-import LoginPanel from "./components/LoginCard";
+import LoginPanel from "./components/LoginPanel";
 import Dashboard from "./components/Dashboard";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
@@ -66,7 +66,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-300">
       <Navbar user={user} onLogout={onLogout} />
-      <div className="mx-auto p-6">
+      <div className="mx-auto p-4 sm:p-6">
         {!user ? (
           <LoginPanel onLogin={onLogin} />
         ) : (
