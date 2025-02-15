@@ -1,36 +1,35 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Copy, Shield, Check, Edit3, Save, AlertCircle } from "lucide-react"
+import { useState } from "react";
+import { Copy, Shield, Check, Edit3, Save, AlertCircle } from "lucide-react";
 
 export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
-  const [copied, setCopied] = useState(false)
-  const [editing, setEditing] = useState(false)
-  const [editedApiKey, setEditedApiKey] = useState(apiKey)
-  const [error, setError] = useState(false)
+  const [copied, setCopied] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editedApiKey, setEditedApiKey] = useState(apiKey);
+  const [error, setError] = useState(false);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(apiKey)
-      setCopied(true)
-      setError(false)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(apiKey);
+      setCopied(true);
+      setError(false);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy text: ", err)
-      setError(true)
+      console.error("Failed to copy text: ", err);
+      setError(true);
     }
-  }
+  };
 
   const handleSave = () => {
-    setEditing(false)
+    setEditing(false);
     if (editedApiKey !== apiKey) {
-      onUpdateApiKey(editedApiKey)
+      onUpdateApiKey(editedApiKey);
     }
-  }
+  };
 
   return (
     <div className="backdrop-blur-sm bg-white/80 p-4 sm:p-6 rounded-2xl border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-      {/* Card Header */}
       <div className="flex items-center gap-3 mb-4 sm:mb-6">
         <div className="p-2 sm:p-3 bg-blue-100 rounded-xl">
           <Shield className="w-4 h-4 sm:w-6 sm:h-6 text-blue-600" />
@@ -38,7 +37,6 @@ export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">API Key</h2>
       </div>
 
-      {/* API Key Display */}
       <div className="relative group">
         {editing ? (
           <input
@@ -53,7 +51,6 @@ export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
           </div>
         )}
 
-        {/* Edit/Save Button */}
         <button
           onClick={editing ? handleSave : () => setEditing(true)}
           className="absolute right-2 sm:right-3 top-2 sm:top-3 p-1 sm:p-2 bg-white rounded-lg transition-all duration-300 hover:bg-blue-50"
@@ -66,7 +63,6 @@ export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
           )}
         </button>
 
-        {/* Copy Button */}
         <button
           onClick={handleCopy}
           className="absolute right-8 sm:right-12 top-2 sm:top-3 p-1 sm:p-2 bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-50"
@@ -80,7 +76,6 @@ export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
         </button>
       </div>
 
-      {/* Error Message */}
       {error && (
         <div className="mt-4 flex items-center text-red-500 text-xs sm:text-sm">
           <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
@@ -88,6 +83,5 @@ export function ApiKeyCard({ apiKey, onUpdateApiKey }) {
         </div>
       )}
     </div>
-  )
+  );
 }
-

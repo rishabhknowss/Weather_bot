@@ -14,9 +14,12 @@ export default function Navbar({ user, setUser, onLogout }) {
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        });
+        const userInfo = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+          }
+        );
         setUser(userInfo.data);
       } catch (error) {
         console.error("Failed to fetch user info:", error);
@@ -33,9 +36,14 @@ export default function Navbar({ user, setUser, onLogout }) {
   return (
     <nav className="bg-white/10 backdrop-blur-md rounded-full py-3 px-4 sm:px-6 sticky top-4 z-50 shadow-lg mx-auto border border-white/20 max-w-7xl">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-900">🌩️ Telegram Bot Weather</h1>
+        <h1 className="text-xl font-bold text-gray-900">
+          🌩️ Telegram Bot Weather
+        </h1>
 
-        <button onClick={handleMenuToggle} className="md:hidden text-gray-800 text-2xl focus:outline-none">
+        <button
+          onClick={handleMenuToggle}
+          className="md:hidden text-gray-800 text-2xl focus:outline-none"
+        >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
 
@@ -44,7 +52,10 @@ export default function Navbar({ user, setUser, onLogout }) {
             menuOpen ? "block" : "hidden"
           } md:flex items-center space-y-4 md:space-y-0 md:space-x-8 mt-4 md:mt-0 transition-all absolute md:relative top-full left-0 right-0 bg-white/90 md:bg-transparent p-4 md:p-0 rounded-b-2xl md:rounded-none`}
         >
-          <a href="/" className="text-gray-800 hover:text-blue-500 transition font-medium flex items-center">
+          <a
+            href="/"
+            className="text-gray-800 hover:text-blue-500 transition font-medium flex items-center"
+          >
             <FiHome className="mr-2" /> Home
           </a>
           <a
